@@ -1,0 +1,13 @@
+
+<div class="jumbotron">
+  <h1>Reboot Yourself</h1>
+  <p class="lead">
+    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+    Rebalance your life.
+  </p>
+  <p>Meetup Groups Nearby:</p>
+  <div ng-repeat='group in groups'>
+    {{group.name}}
+    <img src={{group.group_photo.thumb_link}}></img>
+  </div>
+</div>
