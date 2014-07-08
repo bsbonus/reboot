@@ -1,13 +1,23 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="#">About</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">rebootme</h3>
+</div>
 
-<div class="jumbotron">
-  <h1>Reboot Yourself</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Rebalance your life.
-  </p>
-  <p>Meetup Groups Nearby:</p>
-  <div ng-repeat='group in groups'>
-    {{group.name}}
-    <img src={{group.group_photo.thumb_link}}></img>
+<google-map center="map.center" zoom="map.zoom" draggable='true'></google-map>
+
+
+<div class="container-fluid">
+  <h2>Meetup Groups Nearby:</h2>
+  <div class='row-fluid' ng-repeat='groups in meetupGroups'>
+    <div ng-click='loadCategoryIdeas()' ng-repeat='meetups in groups' class='col-xs-6 col-sm-4 col-md-3'>
+      {{meetups.name}}
+      <img class='img-responsive' src={{meetups.group_photo.thumb_link}}></img>
+      <span>{{meetups.members}} Members</span>
+      <span ng-click='displayNextEvent()'>Upcoming Events</span>
+    </div>
   </div>
 </div>
