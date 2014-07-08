@@ -7,18 +7,14 @@
   <h3 class="text-muted">rebootme</h3>
 </div>
 
-<div class="jumbotron">
+<div class="container-fluid">
   <h1>Reboot Yourself</h1>
   <p class="lead">
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
     Rebalance your life.
   </p>
   <p>Find something that excites you</p>
-  <div ng-repeat='category in categories'>
-    <p><a class="btn btn-lg btn-primary" ng-href="#category/{{category.id}}">{{category.name}}</a></p>
-  </div>
-</div>
-
-<div class="footer">
-  <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+  <div class='row-fluid' ng-repeat='group in categoryGroups'>
+    <div ng-click='loadCategoryIdeas()' ng-repeat='category in group' class='col-xs-12 col-md-3 btn btn-lg btn-primary'>{{category.name}}</div>
+  </div
 </div>
