@@ -1,6 +1,6 @@
 'use strict'
 
-@rebootme = angular.module('rebootmeApp', ['ngRoute', 'ngResource', 'ngSanitize', 'ngCookies', 'ngResource', ])
+@rebootme = angular.module('rebootmeApp', ['ngRoute', 'ngResource', 'ngSanitize', 'ngCookies', 'ngResource', 'google-maps'])
 
 @rebootme.config ($routeProvider) ->
   $routeProvider
