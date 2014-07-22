@@ -7,7 +7,9 @@
   <h3 class="text-muted">rebootme</h3>
 </div>
 
-<google-map center="map.center" zoom="map.zoom" draggable='true'></google-map>
+<google-map center="map.center" zoom="map.zoom" draggable='true'>
+  <markers models="map.markers" coords="'self'" labelContent="'title'" labelAnchor="80 0"></markers>
+</google-map>
 
 
 <div class="container-fluid">
@@ -17,7 +19,6 @@
       {{meetups.name}}
       <img class='img-responsive' src={{meetups.group_photo.thumb_link}}></img>
       <span>{{meetups.members}} Members</span>
-      <span ng-click='displayNextEvent()'>Upcoming Events</span>
     </div>
   </div>
 </div>

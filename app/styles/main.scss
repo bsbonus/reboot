@@ -97,4 +97,13 @@ body {
 .angular-google-map-container { 
   height: 400px; 
   width: 70%;
+  margin: 0 auto;
+  .label{
+    background-color: #fff;
+    font-size: 1.5em;
+    padding: 10px;
+    color: #585858;
+    text-align: center;
+    width: 60px;
+  }
 }

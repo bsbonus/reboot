@@ -1,4 +1,3 @@
-
 @rebootme.controller 'ShowCategoryCtrl', ['$scope', '$location', '$routeParams', '$http', ($scope, $location, $routeParams, $http) ->
   catId = $routeParams.categoryId
   key = '7372106c1e2516b3a1b52403f6c1f20'
@@ -14,6 +13,7 @@
       else if index % 4 isnt 0
         $scope.meetupGroups[count][index % 4 - 1] = category
     $scope.groups = data.data
+    $scope.setMarkers()
   )
 
   $scope.categoryId = $routeParams.categoryId
@@ -27,7 +27,19 @@
           longitude: -116
         zoom: 13
     else
-      alert('Unable to use geolocation. Upgrade your browser! Using Default location.')
+     alert('Unable to use geolocation. Upgrade your browser! Using Default location.')
+
+  $scope.setMarkers = ->
+    $scope.markerSet = []
+    for group in $scope.groups
+      name = "<div class='label'>#{group.name}</div>"
+      $scope.markerSet.push(
+        id: group.id
+        latitude: group.lat
+        longitude: group.lon
+        title: name
+      )
+
 
   $scope.setCoords = (position)->
     $scope.coords = position.coords
@@ -37,29 +49,9 @@
           latitude: $scope.coords.latitude
           longitude: $scope.coords.longitude
         zoom: 13
+        markers: $scope.markerSet
       $scope.$apply()
     ), 500
-
-  $scope.displayNextEvent = ->
-    if @.meetups.next_event.id then event_id = @.meetups.next_event.id else alert('There are no upcoming meetups')
-    if event_id
-      url = "https://api.meetup.com/2/event/#{event_id}?&sign=true&photo-host=public&page=1&key=#{key}&callback=JSON_CALLBACK"
-      $http.jsonp(url).success((data) ->
-        if data.status is "404 Not Found"
-          console.log 'Not found'
-        else if data.venue and data.venue.lon and data.venue.lat
-          console.log data.venue.lat
-          console.log data.venue.lon
-          $scope.mapMarker = new google.maps.Marker({
-            position:
-              latitude: $scope.coords.latitude
-              longitude: $scope.coords.longitude
-            map: $scope.map,
-            title: 'Hello World!'
-          })
-        else
-          console.log data
-      )
 
   $scope.getLocation()
 ]
