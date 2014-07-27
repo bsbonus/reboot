@@ -14,6 +14,7 @@
         $scope.meetupGroups[count][index % 4 - 1] = category
     $scope.groups = data.data
     $scope.setMarkers()
+    console.log $scope.groups
   )
 
   $scope.categoryId = $routeParams.categoryId

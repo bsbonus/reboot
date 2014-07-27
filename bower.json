@@ -1,6 +1,7 @@
 {
   "name": "rebootme",
   "version": "0.0.0",
+  "appPath": "ng-app",
   "dependencies": {
     "angular": "1.2.15",
     "json3": "~3.2.6",

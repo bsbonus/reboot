@@ -21,8 +21,8 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: {
       // configurable paths
-      app: require('./bower.json').appPath || 'app',
-      dist: 'dist'
+      app: require('./bower.json').appPath || 'ng-app',
+      dist: '../public'
     },
 
     // Watches files for changes and runs tasks based on the changed files
@@ -58,9 +58,13 @@ module.exports = function (grunt) {
         ]
       }
     },
-
     // The actual grunt server settings
     connect: {
+      proxies: [{
+        context: '/api',
+        host: 'localhost',
+        port: 3000
+      }],
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
